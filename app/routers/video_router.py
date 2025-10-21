@@ -10,7 +10,7 @@ router = APIRouter()
 
 @router.post("/video-detect")
 async def video_detect(file: UploadFile = File(...)):
-    if not file.filename.lower().endswith((".mp4", ".mov", ".avi", ".mkv", ".webm")):
+    if not file.filename.lower().endswith((".mp4", ".mov", ".avi", ".mkv", ".webm")): # type: ignore
         return build_response([], "Unsupported file type", 1, 400)
 
     temp_path = os.path.join(TEMP_DIR, f"temp_{uuid.uuid4().hex}_{file.filename}")

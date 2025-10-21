@@ -24,7 +24,7 @@ async def image_detect(input_data: ImageInput):
 async def upload_and_detect_images(files: List[UploadFile] = File(...)):
     results = []
     for file in files:
-        temp_path = os.path.join(TEMP_DIR, file.filename)
+        temp_path = os.path.join(TEMP_DIR, file.filename) # type: ignore
         with open(temp_path, "wb") as f:
             f.write(await file.read())
         res = process_image_file(temp_path)

@@ -1,4 +1,4 @@
-from ultralytics import YOLO
+from ultralytics.models import YOLO
 from .response_builder import log_event
 
 from app.config import YOLO_MODEL_PATH

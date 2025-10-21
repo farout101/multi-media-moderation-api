@@ -15,9 +15,9 @@ def detect_frame(frame_bgr):
     dets = []
     unsafe_found = False
 
-    xyxy = boxes.xyxy.cpu().numpy() if hasattr(boxes, "xyxy") else []
-    cls_arr = boxes.cls.cpu().numpy() if hasattr(boxes, "cls") else []
-    conf_arr = boxes.conf.cpu().numpy() if hasattr(boxes, "conf") else []
+    xyxy = boxes.xyxy.cpu().numpy() if hasattr(boxes, "xyxy") else [] # type: ignore
+    cls_arr = boxes.cls.cpu().numpy() if hasattr(boxes, "cls") else [] # type: ignore
+    conf_arr = boxes.conf.cpu().numpy() if hasattr(boxes, "conf") else [] # type: ignore
 
     if len(xyxy) == 0:
         fake_label = random.choice(SAFE_LABELS)

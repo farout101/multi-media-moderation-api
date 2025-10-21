@@ -1,0 +1,112 @@
+# =====================================
+# Python & FastAPI Project Ignore Rules
+# =====================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# temp files
+temp_media/
+
+# models
+models/
+
+# Virtual environments
+.env
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+
+# Environment variables
+*.env
+.env.*
+
+# Logs
+*.log
+*.out
+*.err
+logs/
+*.pid
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Testing / Coverage
+.pytest_cache/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+htmlcov/
+test_results/
+
+# Build / Distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+*.spec
+
+# Temporary files
+tmp/
+temp/
+temp_media/
+cache/
+__temp__/
+*.tmp
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints
+
+# Mac & Windows system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Model files (large binary data)
+*.pt
+*.onnx
+*.weights
+*.h5
+
+# Uploads / Datasets
+uploads/
+datasets/
+input_videos/
+output_videos/
+
+# Uvicorn reload cache
+*.reload
+
+# Docker & Deployment
+docker-compose.override.yml
+*.pid
+*.sock
+
+# VSCode local debugging
+.vscode/
+*.code-workspace
+
+# PyInstaller artifacts
+*.manifest
+*.spec
+
+# Pyre type checker
+.pyre/
+
+# MyPy
+.mypy_cache/
+
+# Node (if frontend or admin panel is added)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log

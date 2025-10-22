@@ -25,14 +25,35 @@ python run.py
 
 The API will be available at `http://127.0.0.1:8000`.
 
-## Testing the Application under load
-Make sure you have locust installed in your system:
-```bash
-pip install locust
-```
-*Make Sure You Have Pointed The Correcet Video Path in load_test.py*
-To test the application, use the following command:
+## Load Testing with Locust
 
-```bash
-locust -f test/load_test.py
-```
+This project uses [Locust](https://locust.io/) to simulate concurrent users and test the performance of the API under load. The load test script is located at `test/load_test.py`.
+
+### How it Works
+
+The `load_test.py` script defines a `FastAPIUser` that sends POST requests to the `/video-detect` endpoint. It randomly selects video files from the `test_videos` directory and sends them as multipart/form-data.
+
+### Prerequisites
+
+1.  **Install Locust:**
+    ```bash
+    pip install locust
+    ```
+2.  **Add Test Videos:**
+    Place the video files you want to use for testing in the `test_videos` directory at project root. The script will automatically discover them.
+
+### Running the Load Test
+
+1.  **Start the load test from the root directory of the project:**
+    ```bash
+    locust -f test/load_test.py
+    ```
+2.  **Open the Locust web interface:**
+    Open your browser and go to [http://localhost:8089](http://localhost:8089).
+
+3.  **Start the simulation:**
+    -   Enter the number of users you want to simulate.
+    -   Enter the spawn rate (users to start per second).
+    -   Click "Start swarming".
+
+You can then monitor the performance of the API in real-time through the Locust web interface.

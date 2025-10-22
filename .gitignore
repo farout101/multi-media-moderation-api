@@ -9,7 +9,7 @@ __pycache__/
 
 # temp files
 temp_media/
-
+test_videos/
 # models
 models/
 

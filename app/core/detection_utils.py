@@ -72,11 +72,11 @@ def process_video_file(video_path: str):
     if not cap.isOpened():
         raise RuntimeError("Cannot open video")
 
-    fps = cap.get(cv2.CAP_PROP_FPS) or 25
-    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) or 0
-    duration_sec = frame_count / fps if frame_count else 0
+    fps = cap.get(cv2.CAP_PROP_FPS) or 25 # Frame rate fallback
+    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) or 0 # Total frames
+    duration_sec = frame_count / fps if frame_count else 0 # Duration in seconds
 
-    interval_sec = 3 if duration_sec < 60 else 5 if duration_sec < 120 else 7
+    interval_sec = 3 if duration_sec < 60 else 5 if duration_sec < 120 else 7 # Sampling interval
     interval_frames = max(1, int(fps * interval_sec))
     frame_idx = 0
 

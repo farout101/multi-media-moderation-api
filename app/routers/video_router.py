@@ -6,7 +6,14 @@ from app.core.detection_utils import process_video_file
 from app.core.response_builder import build_response, log_event
 from app.config import TEMP_DIR
 
+import asyncio
+
 router = APIRouter()
+
+async def run_in_thread(func, *args):
+    """Utility: run blocking function in threadpool"""
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, func, *args)
 
 @router.post("/video-detect")
 async def video_detect(file: UploadFile = File(...)):
@@ -19,7 +26,7 @@ async def video_detect(file: UploadFile = File(...)):
 
     log_event(f"Starting video detection for {file.filename}")
     start_ts = time.time()
-    result = process_video_file(temp_path)
+    result = await run_in_thread(process_video_file, temp_path)
     os.remove(temp_path)
     log_event(f"Finished video detection in {time.time() - start_ts:.2f} sec")
     return build_response([result], "Processed video successfully")

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import image_router, video_router
+from app.routers import image_router, test_multip_result, video_router
 from app.core.response_builder import build_response
 
 app = FastAPI(title="YOLOv8 Moderation API (Image + Video)")
@@ -19,3 +19,4 @@ def health():
 
 app.include_router(image_router.router)
 app.include_router(video_router.router)
+app.include_router(test_multip_result.router)

@@ -1,6 +1,33 @@
 # YOLO Moderation API
 
-This is a FastAPI-based API for image and video moderation using a YOLO model.
+This is a FastAPI-based API for image and video moderation using a YOLOv8 model. It provides endpoints for detecting unsafe content in images and videos.
+
+## Features
+
+-   **Image and Video Moderation**: Detects unsafe content in images and videos.
+-   **Configurable Labels**: Easily configure the labels to be considered unsafe.
+-   **Load Testing**: Includes a Locust-based load testing script to evaluate performance.
+
+## API Endpoints
+
+The following endpoints are available:
+
+-   `POST /image-detect`: Analyzes a single image for unsafe content.
+-   `POST /video-detect`: Analyzes a video for unsafe content.
+-   `GET /health`: A health check endpoint.
+
+## Configuration
+
+The following variables can be configured in `app/config.py`:
+
+-   `UNSAFE_LABELS`: A set of labels to be considered unsafe.
+-   `SAFE_LABELS`: A list of labels to be considered safe.
+-   `YOLO_MODEL_PATH`: The path to the YOLO model file.
+-   `CONFIDENCE_THRESHOLD`: The confidence threshold for object detection.
+-   `IOU_THRESHOLD`: The IOU threshold for non-maximum suppression.
+-   `IMG_SIZE`: The image size for model input.
+-   `TEMP_DIR`: The directory for temporary media files.
+-   `DEVICE`: The device to run the model on (`cuda` or `cpu`).
 
 ## Installation
 
@@ -57,3 +84,19 @@ The `load_test.py` script defines a `FastAPIUser` that sends POST requests to th
     -   Click "Start swarming".
 
 You can then monitor the performance of the API in real-time through the Locust web interface.
+
+## Dependencies
+
+The project's dependencies are listed below:
+
+-   fastapi
+-   uvicorn
+-   pydantic
+-   Pillow
+-   opencv-python
+-   torch
+-   ultralytics
+-   python-multipart
+-   locust
+-   requests
+-   streamlit

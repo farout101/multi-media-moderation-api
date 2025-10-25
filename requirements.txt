@@ -7,3 +7,5 @@ torch
 ultralytics
 python-multipart
 locust
+requests
+streamlit
